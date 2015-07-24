@@ -8,6 +8,8 @@ from appconf import AppConf
 class CeleryHaystack(AppConf):
     #: The default alias to
     DEFAULT_ALIAS = None
+    #: The database connection used to look up the indexed object
+    DEFAULT_DATABASE_ALIAS = 'default'
     #: The delay (in seconds) before task will be executed (Celery countdown)
     COUNTDOWN = 0
     #: The delay (in seconds) after which a failed index is retried
