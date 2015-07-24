@@ -69,7 +69,9 @@ class CeleryHaystackSignalHandler(Task):
         """
         instance = None
         try:
-            instance = model_class._default_manager.get(pk=pk)
+            instance = model_class._default_manager.using(
+                settings.CELERY_HAYSTACK_DEFAULT_DATABASE_ALIAS
+            ).get(pk=pk)
         except model_class.DoesNotExist:
             logger.error("Couldn't load %s.%s.%s. Somehow it went missing?" %
                          (model_class._meta.app_label.lower(),
