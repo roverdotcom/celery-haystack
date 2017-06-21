@@ -1,5 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.core.management import call_command
+
 from django.apps import apps
 get_model = apps.get_model
 
