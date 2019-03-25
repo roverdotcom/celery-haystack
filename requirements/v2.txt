@@ -1,6 +1,6 @@
 django-discover-runner
 django-haystack
-celery
+celery==4.0.2
 Whoosh
 flake8
 coverage
