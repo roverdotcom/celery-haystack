@@ -1,9 +1,16 @@
+from celery import Celery
 from django.core.management import call_command
 from django.test import TransactionTestCase
-
 from haystack.query import SearchQuerySet
 
+from celery_haystack.tasks import CeleryHaystackSignalHandler
 from .models import Note
+
+
+app = Celery()
+app.config_from_object('django.conf:settings', namespace='CELERY')
+CeleryHaystackSignalHandler.bind(app)
+app.tasks.register(CeleryHaystackSignalHandler())
 
 
 class QueuedSearchIndexTestCase(TransactionTestCase):

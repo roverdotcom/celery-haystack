@@ -14,6 +14,8 @@ logger = get_task_logger(__name__)
 
 
 class CeleryHaystackSignalHandler(Task):
+    name = 'celery_haystack.tasks.CeleryHaystackSignalHandler'
+
     using = settings.CELERY_HAYSTACK_DEFAULT_ALIAS
     max_retries = settings.CELERY_HAYSTACK_MAX_RETRIES
     default_retry_delay = settings.CELERY_HAYSTACK_RETRY_DELAY
